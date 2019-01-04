@@ -12,11 +12,23 @@ NEWMAX=$1
 
 # if NEWMAX(value only)=0 give instructions and echo them
 
+if [ -z $NEWMAX ]
+then clear
+        echo -e "\n Your masternodes need to connect to other masternodes in"
+        echo -e " order to function properly. Please enter a number of max"
+        echo -e " connections you'd like to set (between 25 and 255)  : \n"
 
+fi
 
-
-# extglob was necessary to make rm -- ! possible
-shopt -s extglob
+while :; do
+if [ -z $NEWMAX ] ; then read -p "  --> " NEWMAX ; fi
+[[ $NEWMAX =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> Try harder, th
+at's not even a number."; continue; }
+if (($NEWMAX >= 25 && $NEWMAX <= 256)); then break
+else echo -e "\n --> That number is too high or too low, try again. \n"
+NEWMAX=""
+fi
+done
 
 # set mnode daemon name from project.env
 MNODE_DAEMON=`grep ^MNODE_DAEMON $INSTALLDIR/nodemaster/config/${PROJECT}/${PROJECT}.env`
@@ -29,8 +41,10 @@ cat $INSTALLDIR/temp/MNODE_DAEMON1 > $INSTALLDIR/temp/MNODE_DAEMON ; rm -f $INST
 for ((i=1;i<=$MNS;i++));
 do
 
-echo -e "\n `date +%m.%d.%Y_%H:%M:%S` : Updating MAXCONNECTIONS in masternode from ${PROJECT}_n${i}"
+echo -e "\n `date +%m.%d.%Y_%H:%M:%S` : Setting maxconnections=$NEWMAX in masternode ${PROJECT}_n${i}"
 sed -i "s/^maxconnections=.*/maxconnections=$NEWMAX/" /etc/masternodes/${PROJECT}_n$i.conf
 
 done
 echo -e "\n"
+echo -e " User has manually set masternode maxconnections to $NEWMAX \n" | tee -a "$LOGFILE"
+
