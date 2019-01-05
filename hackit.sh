@@ -17,34 +17,33 @@ then clear
 else cd $INSTALLDIR
 
 # install additional powertools
-echo -e "\n Downloading and installing mnedit.sh\n"
+echo -e "\n Downloading and installing mnedit.sh"
 sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/mnedit.sh
-sudo ln -s $INSTALLDIR/maintenance/mnedit.sh /usr/local/bin/mnedit
-echo -e "\n Downloading and installing maxconnections.sh\n"
+sudo ln -s $INSTALLDIR/maintenance/mnedit.sh /usr/local/bin/mnedit 2>/dev/null
+echo -e "\n Downloading and installing maxconnections.sh"
 sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/maxconnections.sh
-sudo ln -s $INSTALLDIR/maintenance/maxconnections.sh /usr/local/bin/maxconnections
+sudo ln -s $INSTALLDIR/maintenance/maxconnections.sh /usr/local/bin/maxconnections 2>/dev/null
 
 # download the latest version of NodeValet maintenance scripts
-echo -e "\n Updating autoupdate.sh\n"
+echo -e "\n Updating autoupdate.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/autoupdate.sh
-echo -e "\n Updating checkdaemon.sh\n"
+echo -e "\n Updating checkdaemon.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/checkdaemon.sh
-echo -e "\n Updating checksync.sh\n"
+echo -e "\n Updating checksync.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/checksync.sh
-echo -e "\n Updating cleardebuglog.sh\n"
+echo -e "\n Updating cleardebuglog.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/cleardebuglog.sh
-echo -e "\n Updating getinfo.sh\n"
+echo -e "\n Updating getinfo.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/getinfo.sh
-echo -e "\n Updating killswitch.sh\n"
+echo -e "\n Updating killswitch.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/killswitch.sh
-echo -e "\n Updating makerun.sh\n"
+echo -e "\n Updating makerun.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/makerun.sh
-
-echo -e "\n Updating masternodestatus.sh\n"
+echo -e "\n Updating masternodestatus.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/masternodestatus.sh
-echo -e "\n Updating rebootq.sh\n"
+echo -e "\n Updating rebootq.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/rebootq.sh
-echo -e "\n Updating resync.sh\n"
+echo -e "\n Updating resync.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/resync.sh
 
 
