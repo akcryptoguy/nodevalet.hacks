@@ -25,10 +25,10 @@ echo -e " and you install them at your own risk. \n"
 # install additional powertools
 echo -e " Downloading and installing mnedit.sh"
 sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/mnedit.sh
-sudo ln -nsf $INSTALLDIR/maintenance/mnedit.sh /usr/local/bin/mnedit 2>/dev/null
+sudo ln -nsf $INSTALLDIR/mnedit.sh /usr/local/bin/mnedit 2>/dev/null
 echo -e " Downloading and installing maxconnections.sh"
 sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/maxconnections.sh
-sudo ln -nsf $INSTALLDIR/maintenance/maxconnections.sh /usr/local/bin/maxconnections 2>/dev/null
+sudo ln -nsf $INSTALLDIR/maxconnections.sh /usr/local/bin/maxconnections 2>/dev/null
 
 # download the latest version of NodeValet maintenance scripts
 echo -e " Updating autoupdate.sh"
