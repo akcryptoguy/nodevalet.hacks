@@ -48,8 +48,8 @@ sudo systemctl stop ${PROJECT}_n${i}
 echo -e " Restarting masternode."
 sudo systemctl enable ${PROJECT}_n${i}
 sudo systemctl start ${PROJECT}_n${i}
-echo -e " Pausing for 30 seconds before continuing to reduce strain on CPU."
-sleep 30
+echo -e " Pausing for 10 seconds before continuing to reduce strain on CPU."
+sleep 10
 		
 done
 # echo -e " Unsetting -update flag \n"
