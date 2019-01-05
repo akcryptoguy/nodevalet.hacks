@@ -57,7 +57,7 @@ chmod 0700 *.sh
 
 echo -e "\n With great power, comes great responsibility. Please be careful"
 echo -e " and don't break your server. These should not be used haphazardly.\n"
-echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run hackit.sh" >> "$LOGFILE"
+echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run hackit.sh from nodevalet.hacks" >> "$LOGFILE"
 echo -e "This will update NodeValet maintenance scripts and install new power tools.\n" >> "$LOGFILE"
 fi
 
