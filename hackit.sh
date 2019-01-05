@@ -52,7 +52,7 @@ sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/mai
 echo -e " Updating resync.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/resync.sh
 
-chmod 0700 $INSTALLDIR/*.sh
+chmod 0700 *.sh
 
 echo -e "\n With great power, comes great responsibility. Please be careful"
 echo -e " and don't break your server. These should not be used haphazardly.\n"
