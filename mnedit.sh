@@ -39,6 +39,7 @@ nano /etc/masternodes/${PROJECT}_n${i}.conf
 
 while :; do
 	printf "${cyan}"
+	echo -e "\n"
 	echo -e "\n Changes to that masternode rquire a restart to take effect."
 	read -n 1 -s -r -p "  --> Would you like to restart this masternode now? y/n  " VERIFY
 	if [[ $VERIFY == "y" || $VERIFY == "Y" ]]
