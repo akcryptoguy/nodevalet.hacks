@@ -45,6 +45,7 @@ while :; do
 	if [[ $VERIFY == "y" || $VERIFY == "Y" ]]
 	then printf "${cyan}" ; break
 	elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
+	echo -e "\n"
 	then exit
        	fi
 done
