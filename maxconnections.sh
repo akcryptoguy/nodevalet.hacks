@@ -43,5 +43,6 @@ sed -i "s/^maxconnections=.*/maxconnections=$NEWMAX/" /etc/masternodes/${PROJECT
 
 done
 echo -e "\n"
-echo -e " User has manually set masternode maxconnections to $NEWMAX \n" | tee -a "$LOGFILE"
-
+echo -e " User has manually set masternode maxconnections to $NEWMAX \n"
+echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run maxconnections.sh from nodevalet.hacks" >> "$LOGFILE"
+echo -e " User has manually set masternode maxconnections to $NEWMAX \n" >> "$LOGFILE"
