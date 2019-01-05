@@ -21,7 +21,7 @@ fi
 while :; do
 if [ -z $NEWMAX ] ; then read -p "  --> " NEWMAX ; fi
 [[ $NEWMAX =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> Try harder, that's not even a number."; NEWMAX=""; continue; }
-if (($NEWMAX >= 25 && $NEWMAX <= 256)); then break
+if (($NEWMAX >= 20 && $NEWMAX <= 256)); then break
 else echo -e "\n --> That number is too high or too low, try again. \n"
 NEWMAX=""
 fi
@@ -35,13 +35,26 @@ cat $INSTALLDIR/temp/MNODE_DAEMON | tr -d '[}]' > $INSTALLDIR/temp/MNODE_DAEMON1
 MNODE_DAEMON=$(<$INSTALLDIR/temp/MNODE_DAEMON1)
 cat $INSTALLDIR/temp/MNODE_DAEMON1 > $INSTALLDIR/temp/MNODE_DAEMON ; rm -f $INSTALLDIR/temp/MNODE_DAEMON1
 
+touch $INSTALLDIR/temp/updating
 for ((i=1;i<=$MNS;i++));
 do
 
 echo -e "\n `date +%m.%d.%Y_%H:%M:%S` : Setting maxconnections=$NEWMAX in masternode ${PROJECT}_n${i}"
 sed -i "s/^maxconnections=.*/maxconnections=$NEWMAX/" /etc/masternodes/${PROJECT}_n$i.conf
 
+echo -e " Disabling ${PROJECT}_n${i} now."
+sudo systemctl disable ${PROJECT}_n${i}
+sudo systemctl stop ${PROJECT}_n${i}
+echo -e " Restarting masternode."
+sudo systemctl enable ${PROJECT}_n${i}
+sudo systemctl start ${PROJECT}_n${i}
+echo -e " Pausing for 30 seconds before continuing to reduce strain on CPU."
+sleep 30
+		
 done
+# echo -e " Unsetting -update flag \n"
+rm -f $INSTALLDIR/temp/updating
+
 echo -e "\n"
 echo -e " User has manually set masternode maxconnections to $NEWMAX \n"
 echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run maxconnections.sh from nodevalet.hacks" >> "$LOGFILE"
