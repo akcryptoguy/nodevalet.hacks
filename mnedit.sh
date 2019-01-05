@@ -37,8 +37,7 @@ done
 
 nano /etc/masternodes/${PROJECT}_n${i}.conf
 
-do 
-	while :; do
+while :; do
 	printf "${cyan}"
 	echo -e "\n Changes to that masternode rquire a restart to take effect."
 	read -n 1 -s -r -p "  --> Would you like to restart this masternode now? y/n  " VERIFY
@@ -47,9 +46,9 @@ do
 	elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
 	then exit
        	fi
-	done
-done	
+done
 
+echo -e "\n"
 echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running mnedit.sh" | tee -a "$LOGFILE"
 echo -e  "User has viewed or edited /etc/masternodes/${PROJECT}_n${i}.conf\n"  | tee -a "$LOGFILE"
   
