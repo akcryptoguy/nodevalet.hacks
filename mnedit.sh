@@ -28,7 +28,7 @@ fi
 
 while :; do
 if [ -z $i ] ; then read -p "  --> " i ; fi
-[[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers."; continue; }
+[[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers, try again..."; i=""; continue; }
 if (($i >= 1 && $i <= $MNS)); then break
 else echo -e "\n --> Can't find masternode $i, try again. \n"
 i=""
