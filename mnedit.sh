@@ -22,14 +22,14 @@ i=$1
 # validate input
 if [ -z $i ]
 then clear
-        echo -e "\n It seems like you're trying to edit a masternode.conf file./"
+        echo -e "\n It seems like you're trying to edit a masternode.conf file."
         echo -e " What is the number of the masternode you would like to edit? \n"
 
 fi
 
 while :; do
 if [ -z $i ] ; then read -p "  --> " i ; fi
-[[ $i =~ ^[0-9]+$ ]] || echo -e " --> I only recognize numbers."; continue; }
+[[ $i =~ ^[0-9]+$ ]] || echo -e " --> I only recognize numbers."; continue;
 if (($i >= 1 && $i <= $MNS)); then break
 else echo -e "\n --> Can't find masternode $i, try again. \n"
 i=""
@@ -41,25 +41,13 @@ nano /etc/masternodes/${PROJECT}_n${i}.conf
 echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running mnedit.sh" | tee -a "$LOGFILE"
 echo -e  "User has viewed or edited /etc/masternodes/${PROJECT}_n${i}.conf\n"  | tee -a "$LOGFILE"
   
-do 
-			while :; do
-			printf "${cyan}"
-			echo -e "\n Changes to that masternode rquire a restart to take effect."
-			read -n 1 -s -r -p "  --> Would you like to restart this masternode now? y/n  " VERIFY
-  			if [[ $VERIFY == "y" || $VERIFY == "Y" ]]
-  			then printf "${cyan}" ; break
-  			elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
-        then exit
-        fi
-done	
-
 touch $INSTALLDIR/temp/updating
 echo -e " Disabling ${PROJECT}_n${i} now."
-    sudo systemctl disable ${PROJECT}_n${i}
-		sudo systemctl stop ${PROJECT}_n${i}
-		echo -e " Restarting masternode."
-    sudo systemctl enable ${PROJECT}_n${i}
-		sudo systemctl start ${PROJECT}_n${i}		
+sudo systemctl disable ${PROJECT}_n${i}
+sudo systemctl stop ${PROJECT}_n${i}
+echo -e " Restarting masternode."
+sudo systemctl enable ${PROJECT}_n${i}
+sudo systemctl start ${PROJECT}_n${i}		
 		
 # echo -e " Unsetting -update flag \n"
 rm -f $INSTALLDIR/temp/updating
