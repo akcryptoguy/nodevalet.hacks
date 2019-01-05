@@ -16,6 +16,12 @@ then clear
   exit
 else cd $INSTALLDIR
 
+clear
+echo -e "\n This script will now update NodeValet maintenance scripts "
+echo -e " and install some new tools intended for power users only."
+echo -e " These scripts are not supported or endorsed by NodeValet"
+echo -e " and you install them at your own risk. \n"
+  
 # install additional powertools
 echo -e " Downloading and installing mnedit.sh"
 sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/mnedit.sh
@@ -50,8 +56,8 @@ sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/mai
 echo -e "\n With great power, comes great responsibility. Please be careful"
 echo -e " and don't break your server. These should not be used haphazardly.\n"
 
-echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run hackit.sh" | tee -a "$LOGFILE"
-echo -e "This will update NodeValet maintenance scripts and install new power tools.\n" | tee -a "$LOGFILE"
+echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run hackit.sh" >> "$LOGFILE"
+echo -e "This will update NodeValet maintenance scripts and install new power tools.\n" >> "$LOGFILE"
 fi
 
 exit
