@@ -1,5 +1,4 @@
 #!/bin/bash
-# Wipe stuck masternode chains and force a full resync  
 
 INSTALLDIR='/var/tmp/nodevalet'
 INFODIR='/var/tmp/nvtemp'
@@ -29,7 +28,7 @@ fi
 
 while :; do
 if [ -z $i ] ; then read -p "  --> " i ; fi
-[[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers."; continue; }; continue;
+[[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers."; continue; }
 if (($i >= 1 && $i <= $MNS)); then break
 else echo -e "\n --> Can't find masternode $i, try again. \n"
 i=""
