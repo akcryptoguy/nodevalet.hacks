@@ -22,7 +22,7 @@ fi
 
 while :; do
 if [ -z $NEWMAX ] ; then read -p "  --> " NEWMAX ; fi
-[[ $NEWMAX =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> Try harder, that's not even a number."; continue; }
+[[ $NEWMAX =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> Try harder, that's not even a number."; NEWMAX=""; continue; }
 if (($NEWMAX >= 25 && $NEWMAX <= 256)); then break
 else echo -e "\n --> That number is too high or too low, try again. \n"
 NEWMAX=""
