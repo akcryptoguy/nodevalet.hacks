@@ -46,6 +46,7 @@ while :; do
 	then printf "${cyan}" ; break
 	elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
 	echo -e "\n"
+	echo -e " Changes to your masternode.conf will not take effect until it is restarted\n"
 	then exit
        	fi
 done
