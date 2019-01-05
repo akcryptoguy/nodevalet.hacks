@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script will give users the 'getinfo' of installed masternodes
+# This script will let users quickly change the 'maxconnections' of all installed masternodes
 
 INSTALLDIR='/var/tmp/nodevalet'
 INFODIR='/var/tmp/nvtemp'
@@ -11,13 +11,11 @@ LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 NEWMAX=$1
 
 # if NEWMAX(value only)=0 give instructions and echo them
-
 if [ -z $NEWMAX ]
 then clear
         echo -e "\n Your masternodes need to connect to other masternodes in"
         echo -e " order to function properly. Please enter a number of max"
         echo -e " connections you'd like to set (between 25 and 255)  : \n"
-
 fi
 
 while :; do
