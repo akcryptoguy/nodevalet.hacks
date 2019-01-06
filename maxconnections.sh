@@ -28,7 +28,7 @@ fi
 done
 
 echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run maxconnections.sh from nodevalet.hacks" >> "$LOGFILE"
-echo -e " User has manually set masternode maxconnections to $NEWMAX \n" >> "$LOGFILE"
+echo -e " User has manually set all masternode maxconnections to $NEWMAX \n" >> "$LOGFILE"
 
 # set mnode daemon name from project.env
 MNODE_DAEMON=`grep ^MNODE_DAEMON $INSTALLDIR/nodemaster/config/${PROJECT}/${PROJECT}.env`
@@ -59,4 +59,4 @@ done
 rm -f $INSTALLDIR/temp/updating
 
 echo -e "\n"
-echo -e " User has manually set masternode maxconnections to $NEWMAX \n"
+echo -e " User has manually set all masternode maxconnections to $NEWMAX \n"
