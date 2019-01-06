@@ -53,7 +53,7 @@ done
 
 echo -e "\n"
 echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running mnedit.sh" | tee -a "$LOGFILE"
-echo -e  "User has viewed or edited /etc/masternodes/${PROJECT}_n${i}.conf\n"  | tee -a "$LOGFILE"
+echo -e  " User has viewed or edited /etc/masternodes/${PROJECT}_n${i}.conf\n"  | tee -a "$LOGFILE"
   
 touch $INSTALLDIR/temp/updating
 echo -e " Disabling ${PROJECT}_n${i} now."
