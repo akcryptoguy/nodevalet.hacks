@@ -31,6 +31,13 @@ sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/ma
 sudo ln -nsf $INSTALLDIR/maxconnections.sh /usr/local/bin/maxconnections 2>/dev/null
 
 # download the latest version of NodeValet maintenance scripts
+echo -e " Downloading and installing showlog.sh"
+sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/showlog.sh
+sudo ln -nsf $INSTALLDIR/showlog.sh /usr/local/bin/showlog 2>/dev/null
+echo -e " Downloading and installing showmlog.sh"
+sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/showmlog.sh
+sudo ln -nsf $INSTALLDIR/showmlog.sh /usr/local/bin/showmlog 2>/dev/null
+
 echo -e " Updating autoupdate.sh"
 sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/autoupdate.sh
 echo -e " Updating checkdaemon.sh"
