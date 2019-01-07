@@ -15,6 +15,7 @@ then clear
   echo -e "\n Did you expect something different? Let us know.\n"
   exit
 else cd $INSTALLDIR
+fi
 
 clear
 echo -e "\n This script will now display the NodeValet maintenance log"
