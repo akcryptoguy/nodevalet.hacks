@@ -7,6 +7,12 @@ INFODIR='/var/tmp/nvtemp'
 PROJECT=`cat $INFODIR/vpscoin.info`
 LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 
+if [ -e $INSTALLDIR/temp/updating ]
+	then echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running hackit.sh" | tee -a "$LOGFILE"
+	echo -e " It looks like I'm busy with something else; stopping update.\n"  | tee -a "$LOGFILE"
+	exit
+fi
+
 # verify that this is a NodeValet.io configured VPS
 if [ -z $PROJECT ]
 then clear
