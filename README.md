@@ -5,4 +5,5 @@ I have created this repository to store scriptlets and features which we decided
 
 ## To modify your NodeValet installation
 I recommend that you move to `cd var/tmp/nodevalet/maintenace` and then run the following:
-```wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/hackit.sh && bash hackit.sh```
+
+``wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/hackit.sh && bash hackit.sh``
