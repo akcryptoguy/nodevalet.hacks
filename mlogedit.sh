@@ -6,7 +6,7 @@ PROJECT=`cat $INFODIR/vpscoin.info`
 MNS=`cat $INFODIR/vpsnumber.info`
 LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 
-nano $LOGFILE
+nano -c $LOGFILE
 
 echo -e "\n"
 echo -e "`date +%m.%d.%Y_%H:%M:%S` : mlogedit.sh was run to modify the Maintenance Log." | tee -a "$LOGFILE"
