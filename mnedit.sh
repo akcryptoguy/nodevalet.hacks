@@ -35,7 +35,7 @@ i=""
 fi
 done
 
-nano /etc/masternodes/${PROJECT}_n${i}.conf
+nano -c /etc/masternodes/${PROJECT}_n${i}.conf
 
 while :; do
 	printf "${cyan}"
