@@ -35,6 +35,9 @@ sudo ln -nsf $INSTALLDIR/mnedit.sh /usr/local/bin/mnedit 2>/dev/null
 echo -e " Downloading and installing maxconnections.sh"
 sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/maxconnections.sh
 sudo ln -nsf $INSTALLDIR/maxconnections.sh /usr/local/bin/maxconnections 2>/dev/null
+echo -e " Downloading and installing mlogedit.sh"
+sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/mlogedit.sh
+sudo ln -nsf $INSTALLDIR/mlogedit.sh /usr/local/bin/mlogedit 2>/dev/null
 
 # download the latest version of NodeValet maintenance scripts
 echo -e " Downloading and installing showlog.sh"
