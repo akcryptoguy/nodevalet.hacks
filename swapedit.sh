@@ -5,11 +5,11 @@ LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 # read or set project variables
 if [ -s $INFODIR/vpscoin.info ]
 then PROJECT=`cat $INFODIR/vpscoin.info`
-     MNS=`cat $INFODIR/vpsnumber.info`
+    MNS=`cat $INFODIR/vpsnumber.info`
 else PROJECT='none'
-		 MNS='10'
+    MNS='10'
 fi
-  
+
 touch $INSTALLDIR/temp/updating
 echo -e "\n"
 echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running swapedit.sh to quickly edit swap size." | tee -a "$LOGFILE"
@@ -20,39 +20,39 @@ i=$1
 # validate input
 if [ -z $i ]
 then clear
-        echo -e "\n It looks like you're trying to edit your swap file."
-        echo -e " How large would you like your swap to be? Enter 1 for 1GB, 2 for 2GB, etc.\n"
+    echo -e "\n It looks like you're trying to edit your swap file."
+    echo -e " How large would you like your swap to be? Enter 1 for 1GB, 2 for 2GB, etc.\n"
 fi
 
 while :; do
-if [ -z $i ] ; then read -p "  --> " i ; fi
-[[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers, try again..."; i=""; continue; }
-if (($i >= 1 && $i <= $MNS)); then break
-else echo -e "\n --> That's too big, try smaller than $MNS. \n"
-i=""
-fi
+    if [ -z $i ] ; then read -p "  --> " i ; fi
+    [[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers, try again..."; i=""; continue; }
+    if (($i >= 1 && $i <= $MNS)); then break
+    else echo -e "\n --> That's too big, try smaller than $MNS. \n"
+        i=""
+    fi
 done
 
 # prompt to shut down masternodes if they're installed
 if [ -s $INFODIR/vpscoin.info ]
-then 
-  while :; do
-  	printf "${cyan}"
-  	echo -e "\n"
-  	echo -e "\n Changes to the swap file require briefly shutting down your masternodes."
-  	read -n 1 -s -r -p "  --> Would you like to do this now and then restart them after? y/n  " VERIFY
-  	if [[ $VERIFY == "y" || $VERIFY == "Y" ]]
-  	then printf "${cyan}" ; break
-  	elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
-  	echo -e "\n"
-  	echo -e " Exiting the script; you cannot change swap size without stopping masternodes.\n"  | tee -a "$LOGFILE"
-    rm -rf $INSTALLDIR/temp/updating
-  	then exit
-         	fi
-  done
-  killswitch
-else 
-  echo -e "There are no running masternodes so no need to shut anything down.\n"
+then
+    while :; do
+        printf "${cyan}"
+        echo -e "\n"
+        echo -e "\n Changes to the swap file require briefly shutting down your masternodes."
+        read -n 1 -s -r -p "  --> Would you like to do this now and then restart them after? y/n  " VERIFY
+        if [[ $VERIFY == "y" || $VERIFY == "Y" ]]
+        then printf "${cyan}" ; break
+    elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
+        echo -e "\n"
+        echo -e " Exiting the script; you cannot change swap size without stopping masternodes.\n"  | tee -a "$LOGFILE"
+        rm -rf $INSTALLDIR/temp/updating
+        then exit
+        fi
+    done
+    killswitch
+else
+    echo -e "There are no running masternodes so no need to shut anything down.\n"
 fi
 
 sudo swapoff -a -v && sudo rm /swapfile && sudo cp /etc/fstab /etc/fstab.bak && sudo sed -i '/\/swapfile/d' /etc/fstab
@@ -65,9 +65,9 @@ echo -e  " User has set the size of the swap file to ${i}G.\n"  | tee -a "$LOGFI
 # restart masternodes if they exist
 if [ -s $INFODIR/vpscoin.info ]
 then echo -e " Restarting all masternode."
-  activate_masternodes_${PROJECT}
-  echo -e " Waiting 10 seconds before I move on."
-  sleep 10
+    activate_masternodes_${PROJECT}
+    echo -e " Waiting 10 seconds before I move on."
+    sleep 10
 else echo -e "There are no masternodes so no need to restart anything.\n"
 fi
 
