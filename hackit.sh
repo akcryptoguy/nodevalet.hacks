@@ -29,7 +29,7 @@ else cd $INSTALLDIR
     echo -e " and you install them at your own risk. \n"
 
     # install additional powertools
-	echo -e " Downloading and installing hackit.sh"
+    echo -e " Downloading and installing hackit.sh"
     sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/hackit.sh
     sudo ln -nsf $INSTALLDIR/hackit.sh /usr/local/bin/hackit 2>/dev/null
     echo -e " Downloading and installing mnedit.sh"
