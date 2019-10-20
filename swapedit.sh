@@ -1,3 +1,5 @@
+#!/bin/bash
+
 INSTALLDIR='/var/tmp/nodevalet'
 INFODIR='/var/tmp/nvtemp'
 LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
@@ -28,7 +30,7 @@ while :; do
     if [ -z $i ] ; then read -p "  --> " i ; fi
     [[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers, try again..."; i=""; continue; }
     if (($i >= 1 && $i <= $MNS)); then break
-    else echo -e "\n --> That's too big, try smaller than $MNS. \n"
+    else echo -e "\n --> That's too big, try a number equal to or smaller than $MNS. \n"
         i=""
     fi
 done
@@ -38,11 +40,11 @@ if [ -s $INFODIR/vpscoin.info ]
 then
     while :; do
         printf "${cyan}"
-        echo -e "\n"
         echo -e "\n Changes to the swap file require briefly shutting down your masternodes."
         read -n 1 -s -r -p "  --> Would you like to do this now and then restart them after? y/n  " VERIFY
         if [[ $VERIFY == "y" || $VERIFY == "Y" ]]
-        then printf "${cyan}" ; break
+        then echo -e "\n"
+        printf "${cyan}" ; break
     elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
         echo -e "\n"
         echo -e " Exiting the script; you cannot change swap size without stopping masternodes.\n"  | tee -a "$LOGFILE"
@@ -73,4 +75,5 @@ fi
 
 echo -e " Unsetting -update flag \n"
 rm -f $INSTALLDIR/temp/updating
+
 echo -e " Your changes to the swap file are now complete \n"
