@@ -8,13 +8,13 @@ PROJECT=$(cat $INFODIR/vpscoin.info)
 LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 
 if [ -e $INSTALLDIR/temp/updating ]
-then echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running hackit.sh" | tee -a "$LOGFILE"
+then echo -e "$(date +%m.%d.%Y_%H:%M:%S) : Running hackit.sh" | tee -a "$LOGFILE"
     echo -e " It looks like I'm busy with something else; stopping update.\n"  | tee -a "$LOGFILE"
     exit
 fi
 
 # verify that this is a NodeValet.io configured VPS
-if [ -z $PROJECT ]
+if [ -z "$PROJECT" ]
 then clear
     echo -e "\n This is not a VPS that was configured by NodeValet and"
     echo -e " as a result, these scripts would do nothing for you. \n"
@@ -101,7 +101,7 @@ else cd $INSTALLDIR
 
     echo -e "\n With great power, comes great responsibility. Please be careful"
     echo -e " and don't break your server. These should not be used haphazardly.\n"
-    echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run hackit.sh from nodevalet.hacks." >> "$LOGFILE"
+    echo -e " $(date +%m.%d.%Y_%H:%M:%S) : User has run hackit.sh from nodevalet.hacks." >> "$LOGFILE"
     echo -e " This updated NodeValet maintenance scripts and installed new power tools\n" >> "$LOGFILE"
 fi
 
