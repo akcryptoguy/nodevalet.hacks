@@ -1,11 +1,13 @@
 #!/bin/bash
 # This script will let users quickly change the 'maxconnections' of all installed masternodes
 
+LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 INSTALLDIR='/var/tmp/nodevalet'
 INFODIR='/var/tmp/nvtemp'
-PROJECT=$(cat $INFODIR/vpscoin.info)
-MNS=$(cat $INFODIR/vpsnumber.info)
-LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
+PROJECT=$(<$INFODIR/vpscoin.info)
+PROJECTl=${PROJECT,,}
+PROJECTt=${PROJECTl~}
+MNODE_DAEMON=$(<$INFODIR/vpsmnode_daemon.info)
 
 # read first argument to string $NEWMAX
 NEWMAX=$1
@@ -51,8 +53,8 @@ do
     echo -e " Restarting masternode."
     sudo systemctl enable ${PROJECT}_n${i} > /dev/null 2>&1
     sudo systemctl start ${PROJECT}_n${i}
-    echo -e " Pausing for 10 seconds before continuing to reduce strain on CPU."
-    sleep 10
+    echo -e " Pausing for 5 seconds before continuing to reduce strain on CPU."
+    sleep 5
 
 done
 # echo -e " Unsetting -update flag \n"
