@@ -46,13 +46,30 @@ else cd $INSTALLDIR
     sudo ln -nsf $INSTALLDIR/swapedit.sh /usr/local/bin/swapedit 2>/dev/null
 
     # download the latest version of NodeValet maintenance scripts
-    echo -e " Downloading and installing showlog.sh"
+        echo -e " Downloading and installing showlog.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/showlog.sh
     sudo ln -nsf $INSTALLDIR/showlog.sh /usr/local/bin/showlog 2>/dev/null
-    echo -e " Downloading and installing showmlog.sh"
+        echo -e " Downloading and installing showmlog.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/showmlog.sh
     sudo ln -nsf $INSTALLDIR/showmlog.sh /usr/local/bin/showmlog 2>/dev/null
-
+        echo -e " Downloading and installing clonesync.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/clonesync.sh
+    sudo ln -nsf $INSTALLDIR/clonesync.sh /usr/local/bin/clonesync 2>/dev/null
+        echo -e " Downloading and installing mnstop.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mnstop.sh
+    sudo ln -nsf $INSTALLDIR/mnstop.sh /usr/local/bin/mnstop 2>/dev/null
+        echo -e " Downloading and installing mnstart.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mnstart.sh
+    sudo ln -nsf $INSTALLDIR/mnstart.sh /usr/local/bin/mnstart 2>/dev/null
+            echo -e " Downloading and installing mulligan.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mulligan.sh
+    sudo ln -nsf $INSTALLDIR/mulligan.sh /usr/local/bin/mulligan 2>/dev/null
+    
+        echo -e " Downloading and installing cronchecksync1.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/cronchecksync1.sh
+        echo -e " Downloading and installing cronchecksync2.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/cronchecksync2.sh
+       
     echo -e " Updating autoupdate.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/autoupdate.sh
     echo -e " Updating checkdaemon.sh"
@@ -76,6 +93,10 @@ else cd $INSTALLDIR
 
     # fix permissions, make scripts executable
     chmod 0700 *.sh
+    
+    # add or update crontabs (first remove, then add to avoid duplicates)
+    crontab -l | grep -v '/var/tmp/nodevalet/maintenance/cronchecksync1.sh'  | crontab -
+    (crontab -l ; echo "*/5 * * * * /var/tmp/nodevalet/maintenance/cronchecksync1.sh") | crontab -
 
     echo -e "\n With great power, comes great responsibility. Please be careful"
     echo -e " and don't break your server. These should not be used haphazardly.\n"
