@@ -46,10 +46,10 @@ do
     sed -i "s/^maxconnections=.*/maxconnections=$NEWMAX/" /etc/masternodes/${PROJECT}_n$i.conf
 
     echo -e " Disabling ${PROJECT}_n${i} now."
-    sudo systemctl disable ${PROJECT}_n${i}
+    sudo systemctl disable ${PROJECT}_n${i} > /dev/null 2>&1
     sudo systemctl stop ${PROJECT}_n${i}
     echo -e " Restarting masternode."
-    sudo systemctl enable ${PROJECT}_n${i}
+    sudo systemctl enable ${PROJECT}_n${i} > /dev/null 2>&1
     sudo systemctl start ${PROJECT}_n${i}
     echo -e " Pausing for 10 seconds before continuing to reduce strain on CPU."
     sleep 10
