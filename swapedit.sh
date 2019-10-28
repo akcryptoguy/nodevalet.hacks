@@ -12,28 +12,28 @@ HNAME=$(<$INFODIR/vpshostname.info)
 
 # read or set project variables
 if [ -s $INFODIR/vpscoin.info ]
-then PROJECT=`cat $INFODIR/vpscoin.info`
-    MNS=`cat $INFODIR/vpsnumber.info`
+then PROJECT=$(cat $INFODIR/vpscoin.info)
+    MNS=$(cat $INFODIR/vpsnumber.info)
 else PROJECT='none'
     MNS='10'
 fi
 
 touch $INSTALLDIR/temp/updating
 echo -e "\n"
-echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running swapedit.sh to quickly edit swap size." | tee -a "$LOGFILE"
+echo -e " $(date +%m.%d.%Y_%H:%M:%S) : Running swapedit.sh to quickly edit swap size." | tee -a "$LOGFILE"
 
 # read first argument to string
 i=$1
 
 # validate input
-if [ -z $i ]
+if [ -z "$i" ]
 then clear
     echo -e "\n It looks like you're trying to edit your swap file."
     echo -e " How large would you like your swap to be? Enter 1 for 1GB, 2 for 2GB, etc.\n"
 fi
 
 while :; do
-    if [ -z $i ] ; then read -p "  --> " i ; fi
+    if [ -z "$i" ] ; then read -p "  --> " i ; fi
     [[ $i =~ ^[0-9]+$ ]] || { printf "${lightred}";echo -e " --> I only recognize numbers, try again..."; i=""; continue; }
     if (($i >= 1 && $i <= $MNS)); then break
     else echo -e "\n --> That's too big, try a number equal to or smaller than $MNS. \n"
