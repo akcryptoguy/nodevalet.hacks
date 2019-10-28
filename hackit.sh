@@ -95,6 +95,7 @@ else cd $INSTALLDIR
     chmod 0700 *.sh
     
     # add or update crontabs (first remove, then add to avoid duplicates)
+    echo -e " Adding cronchecksync1.sh crontab \n"
     crontab -l | grep -v '/var/tmp/nodevalet/maintenance/cronchecksync1.sh'  | crontab -
     (crontab -l ; echo "*/5 * * * * /var/tmp/nodevalet/maintenance/cronchecksync1.sh") | crontab -
 
