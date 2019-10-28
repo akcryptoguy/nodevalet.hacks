@@ -1,10 +1,14 @@
 #!/bin/bash
 
+LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 INSTALLDIR='/var/tmp/nodevalet'
 INFODIR='/var/tmp/nvtemp'
-PROJECT=$(cat $INFODIR/vpscoin.info)
-MNS=$(cat $INFODIR/vpsnumber.info)
-LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
+MNS=$(<$INFODIR/vpsnumber.info)
+PROJECT=$(<$INFODIR/vpscoin.info)
+PROJECTl=${PROJECT,,}
+PROJECTt=${PROJECTl~}
+MNODE_DAEMON=$(<$INFODIR/vpsmnode_daemon.info)
+HNAME=$(<$INFODIR/vpshostname.info)
 
 nano -c $LOGFILE
 
