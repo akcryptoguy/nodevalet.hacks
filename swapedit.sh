@@ -20,7 +20,7 @@ fi
 
 touch $INSTALLDIR/temp/updating
 echo -e "\n"
-echo -e " $(date +%m.%d.%Y_%H:%M:%S) : Running swapedit.sh to quickly edit swap size." | tee -a "$LOGFILE"
+echo -e " $(date +%m.%d.%Y_%H:%M:%S) : Running swapedit.sh to quickly edit swap size.\n" | tee -a "$LOGFILE"
 
 # read first argument to string
 i=$1
