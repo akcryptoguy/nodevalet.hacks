@@ -55,13 +55,16 @@ else cd $INSTALLDIR
         echo -e " Downloading and installing clonesync.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/clonesync.sh
     sudo ln -nsf $INSTALLDIR/clonesync.sh /usr/local/bin/clonesync 2>/dev/null
+        echo -e " Downloading and installing clonesync_all.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/clonesync_all.sh
+    sudo ln -nsf $INSTALLDIR/clonesync_all.sh /usr/local/bin/clonesync_all 2>/dev/null
         echo -e " Downloading and installing mnstop.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mnstop.sh
     sudo ln -nsf $INSTALLDIR/mnstop.sh /usr/local/bin/mnstop 2>/dev/null
         echo -e " Downloading and installing mnstart.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mnstart.sh
     sudo ln -nsf $INSTALLDIR/mnstart.sh /usr/local/bin/mnstart 2>/dev/null
-            echo -e " Downloading and installing mulligan.sh"
+        echo -e " Downloading and installing mulligan.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mulligan.sh
     sudo ln -nsf $INSTALLDIR/mulligan.sh /usr/local/bin/mulligan 2>/dev/null
     
