@@ -56,7 +56,7 @@ elif [[ $VERIFY == "n" || $VERIFY == "N" ]]
 done
 
 echo -e "\n"
-echo -e "`date +%m.%d.%Y_%H:%M:%S` : Running mnedit.sh to quickly edit masternode configuration." | tee -a "$LOGFILE"
+echo -e " `date +%m.%d.%Y_%H:%M:%S` : Running mnedit.sh to quickly edit masternode configuration." | tee -a "$LOGFILE"
 echo -e  " User has viewed or edited /etc/masternodes/${PROJECT}_n${i}.conf\n"  | tee -a "$LOGFILE"
 
 touch $INSTALLDIR/temp/updating
