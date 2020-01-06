@@ -44,6 +44,9 @@ else cd $INSTALLDIR
     echo -e " Downloading and installing swapedit.sh"
     sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/swapedit.sh
     sudo ln -nsf $INSTALLDIR/swapedit.sh /usr/local/bin/swapedit 2>/dev/null
+    echo -e " Downloading and installing bootstrap.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/bootstrap.sh
+    sudo ln -nsf $INSTALLDIR/bootstrap.sh /usr/local/bin/bootstrap 2>/dev/null
 
     # download the latest version of NodeValet maintenance scripts
         echo -e " Downloading and installing showlog.sh"
@@ -93,6 +96,8 @@ else cd $INSTALLDIR
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/rebootq.sh
     echo -e " Updating resync.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/resync.sh
+    echo -e " Updating bootstrap.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/bootstrap.sh
 
     # fix permissions, make scripts executable
     chmod 0700 *.sh
