@@ -31,7 +31,7 @@ while :; do
     fi
 done
 
-echo -e "`date +%m.%d.%Y_%H:%M:%S` : User has run maxconnections.sh from nodevalet.hacks" >> "$LOGFILE"
+echo -e " `date +%m.%d.%Y_%H:%M:%S` : User has run maxconnections.sh from nodevalet.hacks" >> "$LOGFILE"
 echo -e " User has manually set all masternode maxconnections to $NEWMAX \n" >> "$LOGFILE"
 
 # set mnode daemon name from project.env
