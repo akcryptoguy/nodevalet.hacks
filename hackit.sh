@@ -32,9 +32,6 @@ else cd $INSTALLDIR
     echo -e " Downloading and installing hackit.sh"
     sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/hackit.sh
     sudo ln -nsf $INSTALLDIR/hackit.sh /usr/local/bin/hackit 2>/dev/null
-    echo -e " Downloading and installing mnedit.sh"
-    sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/mnedit.sh
-    sudo ln -nsf $INSTALLDIR/mnedit.sh /usr/local/bin/mnedit 2>/dev/null
     echo -e " Downloading and installing maxconnections.sh"
     sudo wget -q -N https://raw.githubusercontent.com/akcryptoguy/nodevalet.hacks/master/maxconnections.sh
     sudo ln -nsf $INSTALLDIR/maxconnections.sh /usr/local/bin/maxconnections 2>/dev/null
@@ -95,6 +92,9 @@ else cd $INSTALLDIR
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/resync.sh
     echo -e " Updating bootstrap.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/bootstrap.sh
+    echo -e " Updating mnedit.sh"
+    sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mnedit.sh
+
 
     # fix permissions, make scripts executable
     chmod 0700 *.sh
