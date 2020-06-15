@@ -130,6 +130,7 @@ else cd $INSTALLDIR
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/cleardebuglog.sh
 
     # Add system link to common maintenance scripts so they can be accessed more easily
+    INSTALLDIR='/var/tmp/nodevalet'
     sudo ln -s $INSTALLDIR/maintenance/addmn.sh /usr/local/bin/addmn 2>/dev/null
     sudo ln -s $INSTALLDIR/maintenance/autoupdate.sh /usr/local/bin/autoupdate 2>/dev/null
     sudo ln -s $INSTALLDIR/maintenance/bootstrap.sh /usr/local/bin/bootstrap 2>/dev/null
