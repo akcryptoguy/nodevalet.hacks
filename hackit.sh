@@ -49,16 +49,16 @@ else cd $INSTALLDIR
     echo -e " Downloading and installing addmn.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/addmn.sh
         
-    echo -e " Updating autoupdate.sh"
+    echo -e " Downloading and installing autoupdate.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/autoupdate.sh
 
-    echo -e " Updating bootstrap.sh"
+    echo -e " Downloading and installing bootstrap.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/bootstrap.sh
 
-    echo -e " Updating checkdaemon.sh"
+    echo -e " Downloading and installing checkdaemon.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/checkdaemon.sh
 
-    echo -e " Updating checksync.sh"
+    echo -e " Downloading and installing checksync.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/checksync.sh
 
     echo -e " Downloading and installing clonesync.sh"
@@ -67,19 +67,19 @@ else cd $INSTALLDIR
     echo -e " Downloading and installing clonesync_all.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/clonesync_all.sh
 
-    echo -e " Updating getinfo.sh"
+    echo -e " Downloading and installing getinfo.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/getinfo.sh
 
-    echo -e " Updating killswitch.sh"
+    echo -e " Downloading and installing killswitch.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/killswitch.sh
     
-    echo -e " Updating makerun.sh"
+    echo -e " Downloading and installing makerun.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/makerun.sh
 
-    echo -e " Updating masternodestatus.sh"
+    echo -e " Downloading and installing masternodestatus.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/masternodestatus.sh
 
-    echo -e " Updating mnedit.sh"
+    echo -e " Downloading and installing mnedit.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mnedit.sh
 
     echo -e " Downloading and installing mnstart.sh"
@@ -91,16 +91,16 @@ else cd $INSTALLDIR
     echo -e " Downloading and installing mulligan.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/mulligan.sh
 
-    echo -e " Updating rebootq.sh"
+    echo -e " Downloading and installing rebootq.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/rebootq.sh
 
-    echo -e " Updating remove_crons.sh"
+    echo -e " Downloading and installing remove_crons.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/remove_crons.sh
 
-    echo -e " Updating restore_crons.sh"
+    echo -e " Downloading and installing restore_crons.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/restore_crons.sh
 
-    echo -e " Updating resync.sh"
+    echo -e " Downloading and installing resync.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/resync.sh
 
     echo -e " Downloading and installing showconf.sh"
@@ -120,10 +120,10 @@ else cd $INSTALLDIR
 
     
     # Update scripts that do not require system links
-    echo -e " Downloading and installing cronchecksync1.sh"
+    echo -e " Updating cronchecksync1.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/cronchecksync1.sh
     
-    echo -e " Downloading and installing cronchecksync2.sh"
+    echo -e " Updating cronchecksync2.sh"
     sudo wget -q -N https://raw.githubusercontent.com/nodevalet/nodevalet/master/maintenance/cronchecksync2.sh   
     
     echo -e " Updating cleardebuglog.sh"
@@ -156,7 +156,8 @@ else cd $INSTALLDIR
     sudo ln -s $INSTALLDIR/maintenance/smartstart.sh /usr/local/bin/smartstart 2>/dev/null
 
     # fix permissions, make scripts executable
-    chmod 0700 *.sh
+    chmod 0700 $INSTALLDIR/maintenance/*.sh
+    chmod 0700 /usr/local/bin/*
     
     # add or update crontabs (first remove, then add to avoid duplicates)
     echo -e " Adding cronchecksync1.sh crontab \n"
