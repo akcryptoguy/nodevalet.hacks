@@ -3,17 +3,17 @@
 LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 INSTALLDIR='/var/tmp/nodevalet'
 INFODIR='/var/tmp/nvtemp'
-MNS=$(<$INFODIR/vpsnumber.info)
-PROJECT=$(<$INFODIR/vpscoin.info)
+MNS=$(<$INFODIR/vps.number.info)
+PROJECT=$(<$INFODIR/vps.coin.info)
 PROJECTl=${PROJECT,,}
 PROJECTt=${PROJECTl~}
-MNODE_DAEMON=$(<$INFODIR/vpsmnode_daemon.info)
-HNAME=$(<$INFODIR/vpshostname.info)
+MNODE_DAEMON=$(<$INFODIR/vps.mnode_daemon.info)
+HNAME=$(<$INFODIR/vps.hostname.info)
 
 # read or set project variables
 if [ -s $INFODIR/vpscoin.info ]
-then PROJECT=$(cat $INFODIR/vpscoin.info)
-    MNS=$(cat $INFODIR/vpsnumber.info)
+then PROJECT=$(cat $INFODIR/vps.coin.info)
+    MNS=$(cat $INFODIR/vps.number.info)
 else PROJECT='none'
     MNS='10'
 fi
@@ -73,7 +73,7 @@ echo -e  " User has set the size of the swap file to ${i}G.\n"  | tee -a "$LOGFI
 # restart masternodes if they exist
 if [ -s $INFODIR/vpscoin.info ]
 then echo -e " Restarting all masternode."
-    activate_masternodes_${PROJECT}
+    smartstart
     echo -e " Waiting 10 seconds before I move on."
     sleep 10
 else echo -e "There are no masternodes so no need to restart anything.\n"
