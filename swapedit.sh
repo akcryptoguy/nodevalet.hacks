@@ -1,14 +1,7 @@
 #!/bin/bash
 
-LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
-INSTALLDIR='/var/tmp/nodevalet'
-INFODIR='/var/tmp/nvtemp'
-MNS=$(<$INFODIR/vps.number.info)
-PROJECT=$(<$INFODIR/vps.coin.info)
-PROJECTl=${PROJECT,,}
-PROJECTt=${PROJECTl~}
-MNODE_DAEMON=$(<$INFODIR/vps.mnode_daemon.info)
-HNAME=$(<$INFODIR/vps.hostname.info)
+# Set common variables
+. /var/tmp/nodevalet/maintenance/vars.sh
 
 # read or set project variables
 if [ -s $INFODIR/vpscoin.info ]

@@ -2,10 +2,10 @@
 # This script will automatically update scripts on NodeValet VPS
 # systems and install some new tools intended only for power users
 
+# Set common variables
+. /var/tmp/nodevalet/maintenance/vars.sh
+
 INSTALLDIR='/var/tmp/nodevalet/maintenance'
-INFODIR='/var/tmp/nvtemp'
-PROJECT=$(cat $INFODIR/vps.coin.info)
-LOGFILE='/var/tmp/nodevalet/logs/maintenance.log'
 
 if [ -e $INSTALLDIR/temp/updating ]
 then echo -e "$(date +%m.%d.%Y_%H:%M:%S) : Running hackit.sh" | tee -a "$LOGFILE"
